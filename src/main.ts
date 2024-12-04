@@ -11,4 +11,4 @@ app.append(header);
 
 const button = document.createElement("button");
 button.innerHTML = "Pet Cat 🐱";
-app.appendChild(button);  // Adding the button to the 'app' element instead of 'document.body'
+app.appendChild(button); // Adding the button to the 'app' element instead of 'document.body'
