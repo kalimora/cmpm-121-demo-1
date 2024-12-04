@@ -1,7 +1,7 @@
+// Import the CSS for styling
 import "./style.css";
 
 const app: HTMLDivElement = document.querySelector("#app")!;
-
 const gameName = "Kitty Clicker";
 document.title = gameName;
 
@@ -14,22 +14,50 @@ button.innerHTML = "Pet Cat 🐱";
 app.appendChild(button); // Adding the button to the 'app' element
 
 let counter: number = 0; // Declare and initialize the counter
+let growthRate: number = 0; // Default growth rate initialized to zero
+
 const counterDisplay = document.createElement("div"); // Create a div for displaying the counter
-counterDisplay.innerHTML = `${counter} purrs`; // Set initial display text
+const growthRateDisplay = document.createElement("div");
+counterDisplay.innerHTML = `${counter} purrs`;
+growthRateDisplay.innerHTML = `Growth Rate: ${growthRate} purrs/sec`;
 app.append(counterDisplay); // Append the counter display to the app element
+app.appendChild(growthRateDisplay);
 
-function updateShopButtons(): void {}
+let previousTime: number = performance.now();
+let isActive: boolean = false;
 
-// Set an interval to increment counter by 1 every second
-setInterval(() => {
-  counter += 1; // Increment the counter
-  counterDisplay.innerHTML = `${Math.round(counter)} purrs`; // Update the display
-  updateShopButtons(); // Call function to update shop buttons
-}, 1000); // Interval set to 1000 milliseconds (1 second)
+function updateCount() {
+  const currentTime = performance.now();
+  const increment = (currentTime - previousTime) / 1000;
+  counter += increment * growthRate;
+  counterDisplay.innerHTML = `${Math.round(counter)} purrs`;
+  previousTime = currentTime;
+  requestAnimationFrame(updateCount);
+}
 
-// Add event listener to button for click events
+const upgradeButton = document.createElement("button");
+upgradeButton.innerHTML = "Increase Growth Rate (+1) - Cost 10 purrs";
+upgradeButton.disabled = true;
+app.appendChild(upgradeButton);
+
+function updateShopButtons() {
+  upgradeButton.disabled = counter < 10;
+}
+
+upgradeButton.addEventListener("click", () => {
+  if (counter >= 10) {
+    counter -= 10;
+    growthRate += 1;
+    growthRateDisplay.innerHTML = `Growth Rate: ${growthRate} purrs/sec`;
+    updateShopButtons();
+  }
+});
+
 button.addEventListener("click", () => {
-  counter += 1; // Increment the counter on click
-  counterDisplay.innerHTML = `${Math.round(counter)} purrs`; // Update the display
-  updateShopButtons(); // Update shop buttons state if needed
+  counter += 1;
+  updateShopButtons();
+  if (!isActive) {
+    isActive = true;
+    requestAnimationFrame(updateCount);
+  }
 });
