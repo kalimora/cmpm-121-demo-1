@@ -13,27 +13,12 @@ interface Item {
 }
 
 const availableItems: Item[] = [
-  {
-    name: "Cuddly Catnip",
-    cost: 10,
-    rate: 0.1,
-    description:
-      "Catnip makes cats purr more: increases purrs by 0.1 per second.",
-  },
-  {
-    name: "Cozy Scratcher",
-    cost: 100,
-    rate: 2,
-    description:
-      "A comfy post for scratching: increases purrs by 2 per second.",
-  },
-  {
-    name: "Fluffy Yarn",
-    cost: 1000,
-    rate: 50,
-    description: "Yarn to play with all day: increases purrs by 50 per second.",
-  },
-];
+    { name: "Catnip", cost: 10, rate: 0.1, description: "A bit of catnip increases purrs by 0.1 per second." },
+    { name: "Scratching Post", cost: 100, rate: 2, description: "A scratching post increases purrs by 2 per second." },
+    { name: "Yarn Ball", cost: 1000, rate: 50, description: "A yarn ball increases purrs by 50 per second." },
+    { name: "Pet Orange Cat", cost: 5000, rate: 100, description: "You notice that more cats are beginning to surround you, which increases purrs by 75 per second." },
+    { name: "Pet Black Cat", cost: 10000, rate: 250, description: "The mystical Black Cat appears, significantly boosting purrs by 200 per second." }
+  ];
 
 // Main button to simulate cat petting
 const mainButton = document.createElement("button");
