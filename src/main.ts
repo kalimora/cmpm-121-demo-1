@@ -6,21 +6,36 @@ const gameName = "Kitty Clicker";
 document.title = gameName;
 
 interface Item {
-    name: string;
-    cost: number;
-    rate: number;
-    description: string;
-  }
-  
-  const availableItems: Item[] = [
-    { name: "Catnip", cost: 10, rate: 0.1, description: "Increases purrs by 0.1 per second." },
-    { name: "Scratching Post", cost: 100, rate: 2, description: "Increases purrs by 2 per second." },
-    { name: "Yarn Ball", cost: 1000, rate: 50, description: "Increases purrs by 50 per second." }
-  ];
+  name: string;
+  cost: number;
+  rate: number;
+  description: string;
+}
+
+const availableItems: Item[] = [
+  {
+    name: "Catnip",
+    cost: 10,
+    rate: 0.1,
+    description: "Increases purrs by 0.1 per second.",
+  },
+  {
+    name: "Scratching Post",
+    cost: 100,
+    rate: 2,
+    description: "Increases purrs by 2 per second.",
+  },
+  {
+    name: "Yarn Ball",
+    cost: 1000,
+    rate: 50,
+    description: "Increases purrs by 50 per second.",
+  },
+];
 
 const button = document.createElement("button");
 button.innerHTML = "Pet Cat 🐱";
-app.appendChild(button); 
+app.appendChild(button);
 
 let counter: number = 0;
 let totalGrowthRate: number = 0;
@@ -46,7 +61,9 @@ function updateCount() {
 
 function updateShopButtons() {
   availableItems.forEach((item, index) => {
-    const shopButton = document.getElementById(`shopButton-${index}`) as HTMLButtonElement;
+    const shopButton = document.getElementById(
+      `shopButton-${index}`,
+    ) as HTMLButtonElement;
     shopButton.disabled = Math.round(counter) < item.cost;
   });
 }
@@ -63,7 +80,7 @@ availableItems.forEach((item, index) => {
   shopButton.innerHTML = `${item.name}: Cost ${item.cost} purrs`;
   shopButton.id = `shopButton-${index}`;
   shopButton.disabled = true;
-  
+
   const itemCounterDiv = document.createElement("div");
   itemCounterDiv.innerHTML = `${item.name} owned: ${upgrades[index]}`;
   itemCounterDiv.id = `itemCounter-${index}`;
@@ -75,7 +92,7 @@ availableItems.forEach((item, index) => {
       counter -= item.cost;
       upgrades[index]++;
       totalGrowthRate += item.rate;
-      item.cost = Math.round(item.cost * 1.15 * 1000) / 1000;  // Increase the cost for the next purchase
+      item.cost = Math.round(item.cost * 1.15 * 1000) / 1000; // Increase the cost for the next purchase
       shopButton.innerHTML = `${item.name}: Cost ${item.cost} purrs`;
       itemCounterDiv.innerHTML = `${item.name} owned: ${upgrades[index]}`;
       growthRateDisplay.innerHTML = `Growth Rate: ${totalGrowthRate} purrs/sec`;
