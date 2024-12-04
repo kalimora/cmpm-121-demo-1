@@ -13,9 +13,24 @@ interface Item {
 }
 
 const availableItems: Item[] = [
-    { name: "Catnip", cost: 10, rate: 0.1, description: "A bit of catnip increases purrs by 0.1 per second." },
-    { name: "Scratching Post", cost: 100, rate: 2, description: "A scratching post increases purrs by 2 per second." },
-    { name: "Yarn Ball", cost: 1000, rate: 50, description: "A yarn ball increases purrs by 50 per second." },
+  {
+    name: "Catnip",
+    cost: 10,
+    rate: 0.1,
+    description: "A bit of catnip increases purrs by 0.1 per second.",
+  },
+  {
+    name: "Scratching Post",
+    cost: 100,
+    rate: 2,
+    description: "A scratching post increases purrs by 2 per second.",
+  },
+  {
+    name: "Yarn Ball",
+    cost: 1000,
+    rate: 50,
+    description: "A yarn ball increases purrs by 50 per second.",
+  },
 ];
 
 const button = document.createElement("button");
@@ -58,7 +73,9 @@ function updateCount() {
 
 function updateShopButtons() {
   availableItems.forEach((item, index) => {
-    const shopButton = document.getElementById(`shopButton-${index}`) as HTMLButtonElement;
+    const shopButton = document.getElementById(
+      `shopButton-${index}`,
+    ) as HTMLButtonElement;
     shopButton.disabled = Math.round(counter) < item.cost;
   });
 }
@@ -80,7 +97,7 @@ availableItems.forEach((item, index) => {
     if (counter >= item.cost) {
       counter -= item.cost;
       upgrades[index]++;
-      item.cost = Math.round(item.cost * 1.15 * 1000) / 1000;  // Update the cost by factor of 1.15
+      item.cost = Math.round(item.cost * 1.15 * 1000) / 1000; // Update the cost by factor of 1.15
       shopButton.innerHTML = `${item.name}: ${item.cost} purrs`;
       const upgradeDiv = document.getElementById(`upgradeDiv-${index}`);
       if (upgradeDiv) {
