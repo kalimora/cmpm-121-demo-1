@@ -17,25 +17,27 @@ const availableItems: Item[] = [
     name: "Cuddly Catnip",
     cost: 10,
     rate: 0.1,
-    description: "Catnip makes cats purr more: increases purrs by 0.1 per second.",
+    description:
+      "Catnip makes cats purr more: increases purrs by 0.1 per second.",
   },
   {
     name: "Cozy Scratcher",
     cost: 100,
     rate: 2,
-    description: "A comfy post for scratching: increases purrs by 2 per second.",
+    description:
+      "A comfy post for scratching: increases purrs by 2 per second.",
   },
   {
     name: "Fluffy Yarn",
     cost: 1000,
     rate: 50,
     description: "Yarn to play with all day: increases purrs by 50 per second.",
-  }
+  },
 ];
 
 // Main button to simulate cat petting
 const mainButton = document.createElement("button");
-mainButton.innerHTML = "Pet the Cat 🐾";  // Changed emoji to a paw print
+mainButton.innerHTML = "Pet the Cat 🐾"; // Changed emoji to a paw print
 app.appendChild(mainButton);
 
 let counter: number = 0;
@@ -44,7 +46,7 @@ const growthRateDisplay = document.createElement("div");
 
 mainButton.addEventListener("click", () => {
   counter += 1;
-  counterDisplay.innerHTML = `${Math.round(counter)} purrs`;  // Now clearly labelled as "purrs"
+  counterDisplay.innerHTML = `${Math.round(counter)} purrs`; // Now clearly labelled as "purrs"
   updateShopButtons();
 });
 
@@ -74,7 +76,9 @@ function updateCount() {
 
 function updateShopButtons() {
   availableItems.forEach((item, index) => {
-    const shopButton = document.getElementById(`shopButton-${index}`) as HTMLButtonElement;
+    const shopButton = document.getElementById(
+      `shopButton-${index}`,
+    ) as HTMLButtonElement;
     shopButton.disabled = Math.round(counter) < item.cost;
   });
 }
