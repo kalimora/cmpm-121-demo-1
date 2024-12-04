@@ -11,14 +11,26 @@ app.append(header);
 
 const button = document.createElement("button");
 button.innerHTML = "Pet Cat 🐱";
-app.appendChild(button); // Adding the button to the 'app' element instead of 'document.body'
+app.appendChild(button);  // Adding the button to the 'app' element
 
-let counter: number = 0; // Initial counter value
-const counterDisplay = document.createElement("div"); // Creating a div for displaying the counter
-counterDisplay.innerHTML = `${counter} purrs`; // Setting initial display text
-app.appendChild(counterDisplay); // Adding the counter display to the 'app' element
+let counter: number = 0;  // Declare and initialize the counter
+const counterDisplay = document.createElement("div");  // Create a div for displaying the counter
+counterDisplay.innerHTML = `${counter} purrs`;  // Set initial display text
+app.append(counterDisplay);  // Append the counter display to the app element
 
+function updateShopButtons(): void {
+}
+
+// Set an interval to increment counter by 1 every second
+setInterval(() => {
+    counter += 1;  // Increment the counter
+    counterDisplay.innerHTML = `${Math.round(counter)} purrs`;  // Update the display
+    updateShopButtons();  // Call function to update shop buttons
+}, 1000);  // Interval set to 1000 milliseconds (1 second)
+
+// Add event listener to button for click events
 button.addEventListener("click", () => {
-  counter += 1; // Increment the counter by 1 each time the button is clicked
-  counterDisplay.innerHTML = `${counter} purrs`; // Update the display text with the new counter value
+    counter += 1;  // Increment the counter on click
+    counterDisplay.innerHTML = `${Math.round(counter)} purrs`;  // Update the display
+    updateShopButtons();  // Update shop buttons state if needed
 });
