@@ -14,36 +14,37 @@ interface Item {
 
 const availableItems: Item[] = [
   {
-    name: "Catnip",
+    name: "Cuddly Catnip",
     cost: 10,
     rate: 0.1,
-    description: "A bit of catnip increases purrs by 0.1 per second.",
+    description: "Catnip makes cats purr more: increases purrs by 0.1 per second.",
   },
   {
-    name: "Scratching Post",
+    name: "Cozy Scratcher",
     cost: 100,
     rate: 2,
-    description: "A scratching post increases purrs by 2 per second.",
+    description: "A comfy post for scratching: increases purrs by 2 per second.",
   },
   {
-    name: "Yarn Ball",
+    name: "Fluffy Yarn",
     cost: 1000,
     rate: 50,
-    description: "A yarn ball increases purrs by 50 per second.",
-  },
+    description: "Yarn to play with all day: increases purrs by 50 per second.",
+  }
 ];
 
-const button = document.createElement("button");
-button.innerHTML = "Pet Cat 🐱";
-app.appendChild(button);
+// Main button to simulate cat petting
+const mainButton = document.createElement("button");
+mainButton.innerHTML = "Pet the Cat 🐾";  // Changed emoji to a paw print
+app.appendChild(mainButton);
 
 let counter: number = 0;
 const counterDisplay = document.createElement("div");
 const growthRateDisplay = document.createElement("div");
 
-button.addEventListener("click", () => {
+mainButton.addEventListener("click", () => {
   counter += 1;
-  counterDisplay.innerHTML = `${Math.round(counter)} purrs`;
+  counterDisplay.innerHTML = `${Math.round(counter)} purrs`;  // Now clearly labelled as "purrs"
   updateShopButtons();
 });
 
@@ -73,9 +74,7 @@ function updateCount() {
 
 function updateShopButtons() {
   availableItems.forEach((item, index) => {
-    const shopButton = document.getElementById(
-      `shopButton-${index}`,
-    ) as HTMLButtonElement;
+    const shopButton = document.getElementById(`shopButton-${index}`) as HTMLButtonElement;
     shopButton.disabled = Math.round(counter) < item.cost;
   });
 }
@@ -83,7 +82,7 @@ function updateShopButtons() {
 const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
-app.append(button);
+app.append(mainButton);
 app.append(growthRateDisplay);
 app.append(counterDisplay);
 
@@ -97,7 +96,7 @@ availableItems.forEach((item, index) => {
     if (counter >= item.cost) {
       counter -= item.cost;
       upgrades[index]++;
-      item.cost = Math.round(item.cost * 1.15 * 1000) / 1000; // Update the cost by factor of 1.15
+      item.cost = Math.round(item.cost * 1.15 * 1000) / 1000;
       shopButton.innerHTML = `${item.name}: ${item.cost} purrs`;
       const upgradeDiv = document.getElementById(`upgradeDiv-${index}`);
       if (upgradeDiv) {
@@ -112,7 +111,7 @@ availableItems.forEach((item, index) => {
   });
 
   const descriptionDiv = document.createElement("div");
-  descriptionDiv.innerHTML = `${item.description}`;
+  descriptionDiv.innerHTML = item.description;
   descriptionDiv.style.fontStyle = "italic";
 
   const upgradeDiv = document.createElement("div");
