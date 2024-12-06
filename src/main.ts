@@ -1,7 +1,7 @@
 // Import the CSS for styling
 import "./style.css";
 
-// Game constants to avoid magic numbers 
+// Game constants to avoid magic numbers
 const COST_SCALING_FACTOR = 1.15;
 const INITIAL_COUNTER = 0;
 
@@ -59,7 +59,7 @@ const upgrades = new Array(availableItems.length).fill(0); // Initialize upgrade
 
 // Create UI components dynamically
 const mainButton = document.createElement("button");
-mainButton.innerHTML = "Pet the Cat 🐾"; 
+mainButton.innerHTML = "Pet the Cat 🐾";
 const counterDisplay = document.createElement("div");
 const growthRateDisplay = document.createElement("div");
 
@@ -75,7 +75,7 @@ counterDisplay.innerHTML = `${counter} purrs`;
 function calculateGrowthRate(): number {
   return availableItems.reduce(
     (total, item, index) => total + upgrades[index] * item.rate,
-    0
+    0,
   );
 }
 
@@ -150,7 +150,7 @@ availableItems.forEach((item, index) => {
 function updateShopButtons(): void {
   availableItems.forEach((item, index) => {
     const shopButton = document.getElementById(
-      `shopButton-${index}`
+      `shopButton-${index}`,
     ) as HTMLButtonElement;
     if (shopButton) {
       shopButton.disabled = Math.round(counter) < item.cost;
