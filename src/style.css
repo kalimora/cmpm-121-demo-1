@@ -35,6 +35,17 @@ h1 {
   font-size: 3em;
   color: #e0aaf2; /* Light Lavender */
   text-shadow: 1px 1px 2px #000; /* Subtle shadow for depth */
+  animation: wiggle 0.5s ease-in-out infinite; /* added wiggle, inspired by https://github.com/EllieM-gd/cmpm-121-demo-1/blob/main/src/main.ts */
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
 }
 
 #app {

@@ -51,11 +51,19 @@ const availableItems: Item[] = [
   },
 ];
 
-// Initialize counter and upgrades (Addresses: Magic Numbers, Naming)
+// Initialize counter and upgrades (Magic Numbers, Naming)
 let counter: number = INITIAL_COUNTER; // Start with a clearly defined constant
 let previousTime: number = performance.now();
 let isActive: boolean = false;
 const upgrades = new Array(availableItems.length).fill(0); // Initialize upgrades array
+
+// Add cat image that was inspired by https://eltz36.github.io/cmpm-121-demo-1/
+const catImage = document.createElement("img");
+catImage.src = "./assets/catimage.jpg"; // Path to your image file
+catImage.style.width = "300px"; // Adjust image size
+catImage.style.display = "block"; // Center the image
+catImage.style.margin = "10px auto"; // Add margin for spacing
+app.appendChild(catImage);
 
 // Create UI components dynamically
 const mainButton = document.createElement("button");
