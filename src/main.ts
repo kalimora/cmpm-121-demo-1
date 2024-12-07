@@ -63,7 +63,7 @@ catImage.src = "./assets/catimage.jpg"; // Path to your image file
 catImage.style.width = "300px"; // Adjust image size
 catImage.style.display = "block"; // Center the image
 catImage.style.margin = "10px auto"; // Add margin for spacing
-app.appendChild(catImage);
+app.append(catImage);
 
 // Create UI components dynamically
 const mainButton = document.createElement("button");
