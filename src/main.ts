@@ -59,7 +59,7 @@ const upgrades = new Array(availableItems.length).fill(0); // Initialize upgrade
 
 // Add cat image that was inspired by https://eltz36.github.io/cmpm-121-demo-1/
 const catImage = document.createElement("img");
-catImage.src = "/cmpm-121-demo-1/assets/catimage.jpg";
+catImage.src = "https://raw.githubusercontent.com/kalimora/cmpm-121-demo-1/main/assets/catimage.jpg";
 catImage.style.width = "300px"; // Adjust image size
 catImage.style.display = "block"; // Center the image
 catImage.style.margin = "10px auto"; // Add margin for spacing
