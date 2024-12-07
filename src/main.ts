@@ -1,5 +1,6 @@
 // Import the CSS for styling
 import "./style.css";
+import catImg from "./catimage.jpg";
 
 // Game constants to avoid magic numbers
 const COST_SCALING_FACTOR = 1.15;
@@ -59,7 +60,7 @@ const upgrades = new Array(availableItems.length).fill(0); // Initialize upgrade
 
 // Add cat image that was inspired by https://eltz36.github.io/cmpm-121-demo-1/
 const catImage = document.createElement("img");
-catImage.src = "https://raw.githubusercontent.com/kalimora/cmpm-121-demo-1/main/assets/catimage.jpg";
+catImage.src = catImg; // Use the imported cat image
 catImage.style.width = "300px"; // Adjust image size
 catImage.style.display = "block"; // Center the image
 catImage.style.margin = "10px auto"; // Add margin for spacing
